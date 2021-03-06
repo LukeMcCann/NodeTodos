@@ -10,10 +10,9 @@
     <h1> <%= kindOfDay %> </h1>
 
     <ul>
-        <li>Practice Node Routing</li>
-        <li>Finish ToDo List App</li>
-        <li>Play Guitar</li>
-        <li>Play Some Video Games</li>
+        <% for (let i = 0; i < newListItems.length; i++) { %>
+            <li><%= newListItems[i] %></li>
+        <% } %>
     </ul>
 
     <form action="/" method="POST">
