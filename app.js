@@ -3,25 +3,20 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const getDate = require('./date');
 require('dotenv').config();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+const date = require(__dirname + "/date.js");
 
 const port = process.env.PORT || 3000;
 
-let items = ['Practice Node JS', 'Complete ToDo List Application', 'Play Guitar'];
+const items = ['Practice Node JS', 'Complete ToDo List Application', 'Play Guitar'];
 
 app.get('/', (req, res) => {
-    const today = new Date();
 
-    const options = {
-        weekday: "long",
-        day: "numeric", 
-        month: "long"
-    };
-
-    const day = today.toLocaleDateString("en-GB", options);
+    let day = date.getDate();
 
     res.render("list", {
         kindOfDay: day,
