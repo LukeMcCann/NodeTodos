@@ -1,9 +1,8 @@
 'use strict';
 
 const routes = require('express').Router();
+const days = require('./days');
 
-routes.get('/', (req, res) => {
-    res.render('list', {foo: 'FOO'});
-});
+routes.use('/', days);
 
 module.exports = routes;
