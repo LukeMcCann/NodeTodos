@@ -8,6 +8,10 @@ day.get('/', (req, res) => {
     const todayAsInt = new Date().getDate();
     let todayAsString = days[todayAsInt];
 
+    if ((typeof todayAsString) === 'undefined') {
+        res.status(404).json({ status: 404, message: 'Day is undefined.' });
+    }
+
     res.render("list", { kindOfDay: todayAsString });
 });
 
