@@ -12,7 +12,7 @@ day.get('/', (req, res) => {
         res.status(404).json({ status: 404, message: 'Day is undefined.' });
     }
 
-    res.render("list", { kindOfDay: todayAsString });
+    res.render("list", { dayAsString: todayAsString });
 });
 
 module.exports = day;
