@@ -1,8 +1,8 @@
 'use strict';
 
 const routes = require('express').Router();
-const days = require('./days');
+const day = require('./day');
 
-routes.use('/', days);
+routes.use('/', day);
 
 module.exports = routes;
