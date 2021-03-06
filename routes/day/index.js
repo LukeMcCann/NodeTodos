@@ -3,16 +3,19 @@
 const day = require('express').Router();
 
 day.get('/', (req, res) => {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    
-    const todayAsInt = new Date().getDate();
-    let todayAsString = days[todayAsInt];
+    const today = new Date();
 
-    if ((typeof todayAsString) === 'undefined') {
-        res.status(404).json({ status: 404, message: 'Day is undefined.' });
-    }
+    const options = {
+        weekday: "long",
+        day: "numeric", 
+        month: "long"
+    };
 
-    res.render("list", { dayAsString: todayAsString });
+    const day = today.toLocaleDateString("en-GB", options);
+
+    res.render("list", {
+        kindOfDay: day
+    });
 });
 
 module.exports = day;
